@@ -11,7 +11,7 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
 
     if @list.save
-      redirect_to lists_path
+      redirect_to list_path(@list)
     else
       render :new
     end
@@ -19,8 +19,8 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @movies = @list.movies
   end
-
   private
 
   def list_params
